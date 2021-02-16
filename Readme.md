@@ -4,9 +4,9 @@
 1. download repo
 2. copy .env.template to .env in root folder
 3. add mysql config:<br>
-3.1 folder structure: /services/mysql/ to root folder<br>
-3.2 add file utf8mb4.cnf to created folder<br>
-3.3 fill it with basic configuration: 
+4.1 folder structure: /services/mysql/ to root folder<br>
+4.2 add file utf8mb4.cnf to created folder<br>
+4.3 fill it with basic configuration: 
    ````
     [client]
     default-character-set = utf8mb4
@@ -19,13 +19,20 @@
     character-set-server = utf8mb4
     collation-server = utf8mb4_unicode_ci
    ````
-3. exec `docker-compose up -d` in root folder
-4. connect and install dependecies:<br>
-4.1 `docker-compose exec app bash`<br>
-4.2 `composer install`<br>
-4.3 `yarn add`
-5. run migrations inside app container `bin/console doctrine:migrations:migrate`
-6. now you can see app running on port 80. 
+5. exec `docker-compose up -d` in root folder
+6. create .env file into /sources/app with content: <br>
+   ````
+        APP_ENV=dev
+        APP_SECRET=c4c70ac9e2c0341adc735b80a6644703
+        DATABASE_URL="postgresql://db_user:db_password@127.0.0.1:5432/db_name?serverVersion=13&charset=utf8"
+   ````
+7. connect and install dependecies:<br>
+7.1 `docker-compose exec app bash`<br>
+7.2 `composer install`<br>
+7.3 `yarn install`
+8. run migrations inside app container `bin/console doctrine:migrations:migrate`
+9. run build inside container for vue.js app `yarn dev`
+10. now you can see app running on port 80. 
 
 ## URLs
 There are some URLs, which you can visit from browser: 
