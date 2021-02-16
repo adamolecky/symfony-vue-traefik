@@ -1,6 +1,6 @@
-#Symfony app with Vue.js and traefik
+# Symfony app with Vue.js and traefik
 
-##Init
+## Init
 1. download repo
 2. copy .env.template to .env in root folder
 3. add mysql config:<br>
@@ -27,14 +27,14 @@
 5. run migrations inside app container `bin/console doctrine:migrations:migrate`
 6. now you can see app running on port 80. 
 
-##URLs
+## URLs
 There are some URLs, which you can visit from browser: 
-###Humanly readable
+### Humanly readable
 - http://app.localhost/ shows you basic landing page of symfony app. 
 - http://app.localhost/home leads to main page of Vue.js app, contains form for storing new user
 - http://app.localhost/list leads to list page of Vue.js app, contains lists of user already added to DB via form
 
-###API
+### API
 
 - http://app.localhost/api/user/create is POST endpoint which excpects data in JSON format:
 ````
@@ -69,13 +69,13 @@ for example:
     {"id":4,"fullName":"My name","password":"$2y$12$poU128IAgfCwxe0O8d6sTenpTV6VGOyVgqU\/NQewrV5RBfWFJ97ra","email":"my@email.com","role":"admin"}
   ]
   ````
-##Development
+## Development
 
 1. Before push to repo run `composer csfix && composer cscheck && composer phpstan`
 2. Run lint before commiting Javascript `yarn csfix`
 3. if you can, just add it to git commit hooks
 
-##Possible improvements: 
+## Possible improvements: 
   - Unit tests
   - tests for vue.js
   - adding uuid to DB insted of incementing ids (in case of heavy usage there is high probability of rising costs on the DB which is connected to locking index for counting...etc.)
